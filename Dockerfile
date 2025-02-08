@@ -38,14 +38,13 @@ RUN apt-get update && \
         && rm -rf /var/lib/apt/lists/* && apt-get clean
 
 # Install font
-COPY ["Franklin Gothic Medium Regular.ttf", "/usr/local/share/fonts/"]
-RUN fc-cache -f
+COPY ["Franklin Gothic Medium Regular.ttf", "/usr/share/fonts/truetype/"]
+RUN fc-cache -fv
 
 # Download Bizhawk & Ironmon-Tracker & Randomizer
 WORKDIR /opt/BizHawk
-RUN curl -L https://github.com/TASEmulators/BizHawk/releases/download/2.10/BizHawk-2.10-linux-x64.tar.gz | tar xz
+RUN curl -sL https://github.com/TASEmulators/BizHawk/releases/download/2.10/BizHawk-2.10-linux-x64.tar.gz | tar xz
 ADD https://github.com/besteon/Ironmon-Tracker.git Lua/Ironmon-Tracker
-RUN wget -O upr.zip https://github.com/Ajarmar/universal-pokemon-randomizer-zx/releases/download/v4.6.1/PokeRandoZX-v4_6_1.zip && \
+RUN wget -qO upr.zip https://github.com/Ajarmar/universal-pokemon-randomizer-zx/releases/download/v4.6.1/PokeRandoZX-v4_6_1.zip && \
     unzip upr.zip PokeRandoZX.jar -d Lua/Ironmon-Tracker && rm upr.zip
 RUN chmod 777 -R /opt/BizHawk
-ENTRYPOINT EmuHawkMono.sh --lua=Lua/Ironmon-Tracker/Ironmon-Tracker.lua $ROM_FILE
