@@ -44,7 +44,8 @@ RUN fc-cache -fv
 # Download Bizhawk & Ironmon-Tracker & Randomizer
 WORKDIR /opt/BizHawk
 RUN curl -sL https://github.com/TASEmulators/BizHawk/releases/download/2.10/BizHawk-2.10-linux-x64.tar.gz | tar xz
-ADD https://github.com/besteon/Ironmon-Tracker.git Lua/Ironmon-Tracker
+RUN git clone -b external https://github.com/champred/Ironmon-Tracker.git Lua/Ironmon-Tracker
 RUN wget -qO upr.zip https://github.com/Ajarmar/universal-pokemon-randomizer-zx/releases/download/v4.6.1/PokeRandoZX-v4_6_1.zip && \
     unzip upr.zip PokeRandoZX.jar -d Lua/Ironmon-Tracker && rm upr.zip
-RUN chmod 777 -R /opt/BizHawk
+RUN chmod -R 777 /opt/BizHawk
+ENV PATH="$PATH:$JAVA_HOME/bin"
