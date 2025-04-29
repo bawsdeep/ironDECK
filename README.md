@@ -23,4 +23,8 @@ This guide is designed with Steam Deck in mind, but can work on any Linux system
    distrobox-export --bin /opt/BizHawk/EmuHawkMono.sh --export-path /home/deck/Desktop \
                     --extra-flags "--lua /opt/BizHawk/Lua/Ironmon-Tracker/Ironmon-Tracker.lua"
    ```
-   Now you can setup the tracker and begin playing!
+5. I would recommend creating a symlink to the tracker folder to make it easier to access the files for setting up new runs from your desktop
+   ```bash
+   ln -s /opt/BizHawk/Lua/Ironmon-Tracker /home/deck/Desktop/Tracker
+   ```
+Now you can setup the tracker and begin playing!
