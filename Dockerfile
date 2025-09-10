@@ -6,22 +6,22 @@ ENV DEBCONF_NONINTERACTIVE_SEEN=true
 ENV XKB_DEFAULT_RULES=base
 
 # Install dependencies (minimal for GUI BizHawk on XWayland)
-RUN apt-get update && \
+RUN apt-get update && apt-get upgrade -y && \
     apt-get install -y --no-install-recommends \
-    unzip \
-    dbus-x11 \
-    libxv1 \
-    libglu1-mesa \
-    xauth \
-    x11-utils \
-    x11-xkb-utils \
-    libgtk2.0-0 \
-    libopenal1 \
-    wget \
-    curl \
-    git \
-    mono \
-    && rm -rf /var/lib/apt/lists/* && apt-get clean
+        unzip \
+        dbus-x11 \
+        libxv1 \
+        libglu1-mesa \
+        xauth \
+        x11-utils \
+        x11-xkb-utils \
+        libgtk2.0-0 \
+        libopenal1 \
+        wget \
+        curl \
+        git \
+        mono-complete \
+    && rm -rf /var/lib/apt/lists/
 
 # Install font
 COPY ["Franklin Gothic Medium Regular.ttf", "/usr/share/fonts/truetype/"]
