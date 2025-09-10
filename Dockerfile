@@ -5,38 +5,22 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV DEBCONF_NONINTERACTIVE_SEEN=true
 ENV XKB_DEFAULT_RULES=base
 
-#Install dependencies
 RUN apt-get update && \
-        apt-get install -y --no-install-recommends \
-        unzip \
-        gnupg \
-        apt-transport-https \
-        dbus-x11 \
-        software-properties-common \
-        libxv1 \
-        libglu1-mesa \
-        xauth \
-        x11-utils \
-        xorg \
-        x11-xkb-utils \
-        libgtk2.0-0 \
-        lsb-release \
-        libopenal1 \
-        libsdl-image1.2 \
-        libsdl-ttf2.0-0 \
-        libsdl1.2debian \
-        libsdl-sound1.2 \
-        wget \
-        curl \
-        git \
-        mono-complete \
-        liblua5.4-dev \
-        libopenal-dev \
-        lua5.4 \
-        libcanberra-gtk-module \
-        mesa-utils \
-        && rm -rf /var/lib/apt/lists/* && apt-get clean
-
+    apt-get install -y --no-install-recommends \
+    unzip \
+    dbus-x11 \
+    libxv1 \
+    libglu1-mesa \
+    xauth \
+    x11-utils \
+    x11-xkb-utils \
+    libgtk2.0-0 \
+    libopenal1 \
+    wget \
+    curl \
+    git \
+    mono-complete
+    && rm -rf /var/lib/apt/lists/* && apt-get clean
 # Install font
 COPY ["Franklin Gothic Medium Regular.ttf", "/usr/share/fonts/truetype/"]
 RUN fc-cache -fv
