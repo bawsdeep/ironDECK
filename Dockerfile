@@ -20,6 +20,7 @@ RUN apt-get update && \
     wget \
     curl \
     git \
+    mono \
     && rm -rf /var/lib/apt/lists/* && apt-get clean
 
 # Install font
