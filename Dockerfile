@@ -9,23 +9,23 @@ RUN pacman -Sy --noconfirm archlinux-keyring && \
 
 # 2. Update system and install dependencies
 RUN pacman -Syu --noconfirm \
-        mono \
-        lua \
-        unzip \
-        git \
-        wget \
-        base-devel \
-        sdl2 \
-        sdl2_image \
-        sdl2_ttf \
-        sdl2_sound \
-        openal \
-        libcanberra \
-        mesa \
-        xorg-xhost \
-        xorg-xauth \
-        xorg-xrandr \
-        jre-openjdk
+    mono \
+    lua \
+    unzip \
+    git \
+    wget \
+    base-devel \
+    sdl2-compat \
+    sdl2_image \
+    sdl2_ttf \
+    sdl2_sound \
+    openal \
+    libcanberra \
+    mesa \
+    xorg-xhost \
+    xorg-xauth \
+    xorg-xrandr \
+    jre-openjdk
 
 # 3. Clean up
 RUN pacman -Scc --noconfirm
