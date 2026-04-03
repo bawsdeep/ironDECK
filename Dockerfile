@@ -43,13 +43,15 @@ RUN curl -sL https://github.com/TASEmulators/BizHawk/releases/download/2.11/BizH
 RUN wget -qO tracker.zip https://github.com/besteon/Ironmon-Tracker/releases/download/v9.2.3/Ironmon-Tracker.zip && \
     unzip tracker.zip -d Lua && rm tracker.zip
 
-# Install PixelFont extension
-RUN wget -qO Lua/Ironmon-Tracker/Extensions/PixelFont.lua \
-    https://github.com/Leopardly/PixelFontExtension/releases/download/1.4/PixelFont.lua
-
 # Install Randomizer
 RUN wget -qO upr.zip https://github.com/Ajarmar/universal-pokemon-randomizer-zx/releases/download/v4.6.1/PokeRandoZX-v4_6_1.zip && \
     unzip upr.zip PokeRandoZX.jar -d Lua/Ironmon-Tracker && rm upr.zip
+
+# Install PixelFont extension
+RUN mkdir -p Lua/Ironmon-Tracker/Extensions && \
+    wget -qO Lua/Ironmon-Tracker/Extensions/PixelFont.lua \
+        https://github.com/Leopardly/PixelFontExtension/releases/download/1.4/PixelFont.lua
+
 
 RUN chmod -R 777 /opt/BizHawk
 ENV PATH="$PATH:$JAVA_HOME/bin"
