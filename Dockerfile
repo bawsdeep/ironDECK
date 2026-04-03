@@ -34,7 +34,6 @@ RUN pacman -Scc --noconfirm
 COPY ["Franklin Gothic Medium Regular.ttf", "/usr/share/fonts/truetype/"]
 RUN fc-cache -fv
 
-
 # Download BizHawk & Ironmon-Tracker & Randomizer
 WORKDIR /opt/BizHawk
 RUN curl -sL https://github.com/TASEmulators/BizHawk/releases/download/2.11/BizHawk-2.11-linux-x64.tar.gz | tar xz
@@ -51,7 +50,6 @@ RUN wget -qO upr.zip https://github.com/Ajarmar/universal-pokemon-randomizer-zx/
 RUN mkdir -p Lua/Ironmon-Tracker/Extensions && \
     wget -qO Lua/Ironmon-Tracker/Extensions/PixelFont.lua \
         https://github.com/Leopardly/PixelFontExtension/releases/download/1.4/PixelFont.lua
-
 
 RUN chmod -R 777 /opt/BizHawk
 ENV PATH="$PATH:$JAVA_HOME/bin"
