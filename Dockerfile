@@ -18,7 +18,7 @@ RUN pacman -Syu --noconfirm \
     sdl2-compat \
     sdl2_image \
     sdl2_ttf \
-    sdl2_sound \
+    sdl2_mixer \
     openal \
     libcanberra \
     mesa \
