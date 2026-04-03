@@ -3,26 +3,28 @@ FROM archlinux:latest
 #Variables for installation
 
 #Install dependencies
-RUN pacman -Syu --noconfirm \
-    mono \
-    lua \
-    unzip \
-    git \
-    wget \
-    base-devel \
-    sdl2 \
-    sdl2_image \
-    sdl2_ttf \
-    sdl2_sound \
-    openal \
-    libcanberra \
-    mesa \
-    xorg-xhost \
-    xorg-xauth \
-    xorg-xrandr \
-    jre-openjdk \
-    && pacman -Scc --noconfirm
-
+RUN pacman -Syy --noconfirm archlinux-keyring && \
+    pacman-key --init && \
+    pacman-key --populate archlinux && \
+    pacman -Syu --noconfirm \
+        mono \
+        lua \
+        unzip \
+        git \
+        wget \
+        base-devel \
+        sdl2 \
+        sdl2_image \
+        sdl2_ttf \
+        sdl2_sound \
+        openal \
+        libcanberra \
+        mesa \
+        xorg-xhost \
+        xorg-xauth \
+        xorg-xrandr \
+        jre-openjdk && \
+    pacman -Scc --noconfirm
 
 # Install font
 COPY ["Franklin Gothic Medium Regular.ttf", "/usr/share/fonts/truetype/"]
