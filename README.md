@@ -1,4 +1,4 @@
-# ironDECK
+ear ironDECK
 
 This guide is designed with Steam Deck in mind, but can work on any Linux system.
 
@@ -10,7 +10,7 @@ This guide is designed with Steam Deck in mind, but can work on any Linux system
    ```
 2. Create a new container from the hosted Docker image, then enter it
    ```bash
-   distrobox create --image ghcr.io/champred/irondeck:master <container-name>
+   distrobox create --image ghcr.io/bawsdeep/irondeck:master <container-name>
    distrobox enter <container-name>
    ```
 3. Inside the container you can then run BizHawk with the ironMON tracker
