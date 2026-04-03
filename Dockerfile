@@ -2,11 +2,13 @@ FROM archlinux:latest
 
 #Variables for installation
 
-#Install dependencies
-RUN pacman -Syy --noconfirm archlinux-keyring && \
+# 1. Update keyring
+RUN pacman -Sy --noconfirm archlinux-keyring && \
     pacman-key --init && \
-    pacman-key --populate archlinux && \
-    pacman -Syu --noconfirm \
+    pacman-key --populate archlinux
+
+# 2. Update system and install dependencies
+RUN pacman -Syu --noconfirm \
         mono \
         lua \
         unzip \
@@ -23,8 +25,10 @@ RUN pacman -Syy --noconfirm archlinux-keyring && \
         xorg-xhost \
         xorg-xauth \
         xorg-xrandr \
-        jre-openjdk && \
-    pacman -Scc --noconfirm
+        jre-openjdk
+
+# 3. Clean up
+RUN pacman -Scc --noconfirm
 
 # Install font
 COPY ["Franklin Gothic Medium Regular.ttf", "/usr/share/fonts/truetype/"]
